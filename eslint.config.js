@@ -10,7 +10,7 @@ export default [
     rules: {
       "no-console": "warn",
       "semi": ["error", "always"],
-      "quotes": ["error", "single"],
+      "quotes": ["error", "double"],
       "@typescript-eslint/explicit-function-return-type": "off",
       "vue/html-indent": ["error", 2],
       "@typescript-eslint/no-unused-vars": "warn"
