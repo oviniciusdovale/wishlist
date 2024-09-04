@@ -2,7 +2,8 @@ import globals from "globals";
 import pluginJs from "@eslint/js";
 import tseslint from "typescript-eslint";
 import pluginVue from "eslint-plugin-vue";
-
+import prettier from "eslint-config-prettier";
+import prettierPlugin from "eslint-plugin-prettier";
 
 export default [
   {
@@ -10,16 +11,32 @@ export default [
     rules: {
       "no-console": "warn",
       "semi": ["error", "always"],
-      "quotes": ["error", "double"],
+      "quotes": ["error", "single"],
       "@typescript-eslint/explicit-function-return-type": "off",
       "vue/html-indent": ["error", 2],
-      "@typescript-eslint/no-unused-vars": "warn"
+      "@typescript-eslint/no-unused-vars": "warn",
+      "prettier/prettier": "error"
     }
-
   },
-  {languageOptions: { globals: {...globals.browser, ...globals.node} }},
+  {
+    files: ['**/*.test.ts', '**/*.spec.ts'],
+    languageOptions: {
+      parserOptions: {
+        parser: '@typescript-eslint/parser',
+      },
+    },
+    rules: {
+      "quotes": ["error", "single"],
+    },
+  },
+  { languageOptions: { globals: { ...globals.browser, ...globals.node } }},
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   ...pluginVue.configs['flat/recommended'],
-  {files: ["**/*.vue"], languageOptions: {parserOptions: {parser: tseslint.parser}}},
+  prettier,
+  prettierPlugin,
+  {
+    files: ["**/*.vue"],
+    languageOptions: { parserOptions: { parser: tseslint.parser } },
+  },
 ];
