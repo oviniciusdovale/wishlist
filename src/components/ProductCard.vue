@@ -10,12 +10,12 @@
     <h2 class="product-title">{{ product.name }}</h2>
 
     <div class="pricing">
-      <span class="full-price"
-        >R$ {{ formatPrice(product.fullPriceInCents) }}</span
-      >
-      <span class="sale-price"
-        >R$ {{ formatPrice(product.salePriceInCents) }}</span
-      >
+      <div class="full-price">
+        R$ {{ formatPrice(product.fullPriceInCents) }}
+      </div>
+      <div class="sale-price">
+        R$ {{ formatPrice(product.salePriceInCents) }}
+      </div>
     </div>
 
     <Rating :rating="product.rating" />
@@ -62,12 +62,13 @@ export default {
 
 <style scoped>
 .product-card {
-  border: 1px solid #ccc;
+  color: #333;
   border-radius: 8px;
   padding: 16px;
-  text-align: center;
+  text-align: left;
   position: relative;
   width: 200px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .product-image {
@@ -94,7 +95,9 @@ export default {
 }
 
 .product-title {
-  font-size: 1.2em;
+  font-size: 1.25em;
+  line-height: 1.1;
+
   margin: 8px 0;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -110,11 +113,11 @@ export default {
 .full-price {
   text-decoration: line-through;
   color: #777;
+  font-size: 1.2em;
 }
 
 .sale-price {
   font-weight: bold;
-  color: #e60000;
-  font-size: 1.2em;
+  font-size: 1.71rem;
 }
 </style>

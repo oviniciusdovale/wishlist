@@ -1,5 +1,5 @@
 <template>
-  <div class="wishlist-page">
+  <div class="wishlist-page container">
     <h1 class="page-title">Minha Wishlist</h1>
     <div v-if="wishlistProducts.length > 0">
       <ProductList :products="wishlistProducts" :showWishlistIcon="false" />
@@ -51,6 +51,12 @@ export default {
 .wishlist-page {
   padding: 16px;
   text-align: center;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 16px;
 }
 
 .page-title {

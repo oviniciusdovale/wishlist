@@ -1,5 +1,5 @@
 <template>
-  <div class="products-page">
+  <div class="products-page container">
     <h1 class="page-title">Lista de Produtos</h1>
     <div v-if="loading">Carregando produtos...</div>
     <div v-if="error">{{ error }}</div>
@@ -41,6 +41,7 @@ export default {
         const response = await axios.get(
           'https://wishlist-back.onrender.com/products',
         );
+        console.log('response', response);
         this.products = response.data;
       } catch (err) {
         this.error = 'Erro ao carregar produtos. Tente novamente mais tarde.';
@@ -74,6 +75,12 @@ export default {
 .products-page {
   padding: 16px;
   text-align: center;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 16px;
 }
 
 .page-title {

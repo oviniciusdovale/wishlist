@@ -59,21 +59,24 @@ export default {
 .header {
   background-color: #8200ff;
   color: white;
-  padding: 16px 32px;
+  padding: 16px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 32px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   width: 100%;
 }
 
 .logo-image {
   height: 40px;
+  width: 70%;
 }
 
 .nav-actions {
