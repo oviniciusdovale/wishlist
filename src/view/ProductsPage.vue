@@ -1,5 +1,6 @@
 <template>
   <div class="products-page container">
+    <Breadcrumb />
     <h1 class="page-title">Lista de Produtos</h1>
     <div v-if="loading">Carregando produtos...</div>
     <div v-if="error">{{ error }}</div>
@@ -15,11 +16,13 @@
 <script lang="ts">
 import axios from 'axios';
 import ProductList from '@/components/ProductList.vue';
+import Breadcrumb from '@/components/Breadcrumb.vue';
 
 export default {
   name: 'ProductsPage',
   components: {
     ProductList,
+    Breadcrumb,
   },
   data() {
     return {

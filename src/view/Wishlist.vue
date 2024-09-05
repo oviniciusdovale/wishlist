@@ -1,5 +1,6 @@
 <template>
   <div class="wishlist-page container">
+    <Breadcrumb current="Wishlist" />
     <h1 class="page-title">Minha Wishlist</h1>
     <div v-if="wishlistProducts.length > 0">
       <ProductList :products="wishlistProducts" :showWishlistIcon="false" />
@@ -14,11 +15,13 @@
 import ProductList from '@/components/ProductList.vue';
 import productsData from '../data/productsMock.json';
 import { Product } from '../types/product';
+import Breadcrumb from '@/components/Breadcrumb.vue';
 
 export default {
   name: 'Wishlist',
   components: {
     ProductList,
+    Breadcrumb,
   },
   data() {
     return {

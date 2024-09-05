@@ -7,11 +7,13 @@ const routes = [
     path: '/',
     name: 'ProductPage',
     component: ProductPage,
+    meta: { breadcrumb: 'Home' },
   },
   {
     path: '/wishlist',
     name: 'Wishlist',
     component: Wishlist,
+    meta: { breadcrumb: 'Wishlist' },
   },
 ];
 
