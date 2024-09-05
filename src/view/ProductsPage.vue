@@ -2,37 +2,44 @@
   <div class="products-page container">
     <Breadcrumb />
     <h1 class="page-title">Lista de Produtos</h1>
-    <div v-if="loading">Carregando produtos...</div>
+    <div v-if="loading">
+      <div class="products-grid">
+        <SkeletonLoader v-for="n in 4" :key="n" />
+      </div>
+    </div>
     <div v-if="error">{{ error }}</div>
     <ProductList
       v-if="!loading && !error"
       :products="products"
       :wishlist="wishlist"
-      @toggle-wishlist="toggleWishlist"
+      @toggle-wishlist="handleToggleWishlist"
     />
   </div>
 </template>
 
 <script lang="ts">
-import axios from 'axios';
+import { fetchProducts } from '../services/productService';
+import { getWishlist, toggleWishlist } from '../services/wishlistService';
 import ProductList from '@/components/ProductList.vue';
 import Breadcrumb from '@/components/Breadcrumb.vue';
+import SkeletonLoader from '@/components/SkeletonLoader.vue';
 
 export default {
   name: 'ProductsPage',
   components: {
     ProductList,
     Breadcrumb,
+    SkeletonLoader,
   },
   data() {
     return {
       products: [] as any[],
       wishlist: [] as string[],
-      loading: false,
+      loading: true,
       error: '',
     };
   },
-  mounted() {
+  async mounted() {
     this.loadProducts();
     this.loadWishlist();
   },
@@ -41,11 +48,7 @@ export default {
       this.loading = true;
       this.error = '';
       try {
-        const response = await axios.get(
-          'https://wishlist-back.onrender.com/products',
-        );
-        console.log('response', response);
-        this.products = response.data;
+        this.products = await fetchProducts();
       } catch (err) {
         this.error = 'Erro ao carregar produtos. Tente novamente mais tarde.';
       } finally {
@@ -53,22 +56,10 @@ export default {
       }
     },
     loadWishlist() {
-      const savedWishlist = localStorage.getItem('wishlist');
-      if (savedWishlist) {
-        this.wishlist = JSON.parse(savedWishlist);
-      }
+      this.wishlist = getWishlist();
     },
-    saveWishlist() {
-      localStorage.setItem('wishlist', JSON.stringify(this.wishlist));
-    },
-    toggleWishlist(productCode: string) {
-      const index = this.wishlist.indexOf(productCode);
-      if (index === -1) {
-        this.wishlist.push(productCode);
-      } else {
-        this.wishlist.splice(index, 1);
-      }
-      this.saveWishlist();
+    handleToggleWishlist(productCode: string) {
+      this.wishlist = toggleWishlist(this.wishlist, productCode);
     },
   },
 };
@@ -84,6 +75,13 @@ export default {
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 16px;
+}
+
+.products-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: space-between;
 }
 
 .page-title {

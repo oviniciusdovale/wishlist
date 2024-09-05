@@ -17,12 +17,10 @@
           </div>
           <div v-if="dropdownOpen" class="dropdown-menu">
             <ul>
-              <li><router-link to="/login">Entrar</router-link></li>
-              <li><router-link to="/account">Minha Conta</router-link></li>
-              <li><router-link to="/addresses">Endereços</router-link></li>
-              <li>
-                <router-link to="/my-netshoes">Minha Netshoes</router-link>
-              </li>
+              <li>Entrar</li>
+              <li>Minha Conta</li>
+              <li>Endereços</li>
+              <li>Minha Netshoes</li>
             </ul>
           </div>
         </div>
@@ -49,7 +47,6 @@ export default {
   methods: {
     toggleDropdown() {
       this.dropdownOpen = !this.dropdownOpen;
-      console.log('Dropdown Open State:', this.dropdownOpen);
     },
   },
 };
@@ -114,7 +111,7 @@ export default {
 
 .dropdown-menu {
   position: absolute;
-  top: 40px;
+  top: 30px;
   right: 0;
   background-color: white;
   color: black;
@@ -122,6 +119,7 @@ export default {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 8px 0;
   z-index: 10;
+  min-width: 150px;
 }
 
 .dropdown-menu ul {
