@@ -17,7 +17,6 @@ Este é um projeto de uma aplicação de **Wishlist** que permite aos usuários 
 - **Vue.js 3**: Framework JavaScript para construir a interface do usuário.
 - **TypeScript**: Linguagem para adicionar tipos ao JavaScript, aumentando a segurança e previsibilidade do código.
 - **Axios**: Biblioteca HTTP para realizar chamadas à API.
-- **Tailwind CSS**: Framework CSS utilitário para estilização rápida e responsiva.
 - **Heroicons**: Ícones SVG para melhorar a interface visual.
 - **Vitest**: Framework de testes para garantir a qualidade do código.
 
@@ -83,20 +82,6 @@ Algumas ideias para melhorias no projeto:
 - Implementar login para que o usuário possa salvar a wishlist em um banco de dados remoto.
 - Adicionar funcionalidade para filtrar produtos por categoria ou faixa de preço.
 - Implementar notificações com toast para melhorar o feedback ao adicionar/remover itens da wishlist.
-
-## Contribuindo
-
-Se você deseja contribuir com este projeto:
-
-1. Faça um fork do repositório.
-2. Crie uma branch para a sua feature (`git checkout -b minha-feature`).
-3. Faça o commit das suas alterações (`git commit -am 'Adiciona minha feature'`).
-4. Envie o push para a branch (`git push origin minha-feature`).
-5. Abra um Pull Request.
-
-## Licença
-
-Este projeto está licenciado sob a MIT License.
 
 
 
