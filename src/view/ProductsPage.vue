@@ -1,7 +1,10 @@
 <template>
   <div class="products-page">
     <h1 class="page-title">Lista de Produtos</h1>
+    <div v-if="loading">Carregando produtos...</div>
+    <div v-if="error">{{ error }}</div>
     <ProductList
+      v-if="!loading && !error"
       :products="products"
       :wishlist="wishlist"
       @toggle-wishlist="toggleWishlist"
@@ -10,8 +13,8 @@
 </template>
 
 <script lang="ts">
+import axios from 'axios';
 import ProductList from '@/components/ProductList.vue';
-import productsData from '../data/productsMock.json';
 
 export default {
   name: 'ProductsPage',
@@ -20,14 +23,31 @@ export default {
   },
   data() {
     return {
-      products: productsData.products,
+      products: [] as any[],
       wishlist: [] as string[],
+      loading: false,
+      error: '',
     };
   },
   mounted() {
+    this.loadProducts();
     this.loadWishlist();
   },
   methods: {
+    async loadProducts() {
+      this.loading = true;
+      this.error = '';
+      try {
+        const response = await axios.get(
+          'https://wishlist-back.onrender.com/products',
+        );
+        this.products = response.data;
+      } catch (err) {
+        this.error = 'Erro ao carregar produtos. Tente novamente mais tarde.';
+      } finally {
+        this.loading = false;
+      }
+    },
     loadWishlist() {
       const savedWishlist = localStorage.getItem('wishlist');
       if (savedWishlist) {

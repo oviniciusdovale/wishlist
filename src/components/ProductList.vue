@@ -49,7 +49,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
-  justify-content: space-around;
+  justify-content: flex-start;
 }
 
 .product-item {

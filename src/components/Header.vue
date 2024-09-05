@@ -1,9 +1,9 @@
 <template>
   <header class="header">
     <div class="container">
-      <div class="logo">
+      <router-link to="/" class="logo">
         <img src="/logo.svg" alt="Logo Netshoes" class="logo-image" />
-      </div>
+      </router-link>
 
       <div class="nav-actions">
         <router-link to="/wishlist" class="wishlist-link">
