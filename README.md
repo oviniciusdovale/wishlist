@@ -36,18 +36,19 @@ Antes de começar, você vai precisar ter o [Node.js](https://nodejs.org/) e o [
 
 ## Estrutura do Projeto
 
-├── public
-│   └── assets
-├── src
-│   ├── components        # Componentes reutilizáveis, como ProductCard, SkeletonLoader, etc.
-│   ├── services          # Serviços que fazem a comunicação com a API e manipulação de localStorage
-│   ├── types             # Definição de tipos e interfaces do TypeScript
-│   ├── views             # Páginas principais da aplicação, como ProductsPage e WishlistPage
-│   └── App.vue           # Componente raiz
-├── tests                 # Testes unitários e de integração
-├── package.json          # Configurações e dependências do projeto
-└── README.md             # Instruções do projeto
-
+```bash
+  ├── public
+  │   └── assets
+  ├── src
+  │   ├── components        # Componentes reutilizáveis, como ProductCard, SkeletonLoader, etc.
+  │   ├── services          # Serviços que fazem a comunicação com a API e manipulação de localStorage
+  │   ├── types             # Definição de tipos e interfaces do TypeScript
+  │   ├── views             # Páginas principais da aplicação, como ProductsPage e WishlistPage
+  │   └── App.vue           # Componente raiz
+  ├── tests                 # Testes unitários e de integração
+  ├── package.json          # Configurações e dependências do projeto
+  └── README.md             # Instruções do projeto
+```
 
 ## Endpoints Utilizados
 
