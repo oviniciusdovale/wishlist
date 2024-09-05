@@ -4,6 +4,9 @@
       v-for="product in products"
       :key="product.code"
       :product="product"
+      :isWishlisted="wishlist && wishlist.includes(product.code)"
+      :showWishlistIcon="showWishlistIcon"
+      @toggle-wishlist="toggleWishlist"
       class="product-item"
     />
   </div>
@@ -22,6 +25,20 @@ export default {
     products: {
       type: Array as () => Product[],
       required: true,
+    },
+    showWishlistIcon: {
+      type: Boolean,
+      default: true,
+    },
+    wishlist: {
+      type: Array,
+      required: false,
+      default: () => [],
+    },
+  },
+  methods: {
+    toggleWishlist(productCode: string) {
+      this.$emit('toggle-wishlist', productCode);
     },
   },
 };
@@ -49,24 +66,6 @@ export default {
 @media (max-width: 640px) {
   .product-item {
     flex: 0 0 100%;
-  }
-}
-
-@media (min-width: 1024px) {
-  .product-item {
-    flex: 0 0 calc(25% - 16px);
-  }
-}
-
-@media (min-width: 1280px) {
-  .product-item {
-    flex: 0 0 calc(25% - 16px);
-  }
-}
-
-@media (min-width: 1536px) {
-  .product-item {
-    flex: 0 0 calc(25% - 16px);
   }
 }
 </style>

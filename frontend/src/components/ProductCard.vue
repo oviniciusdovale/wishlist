@@ -1,6 +1,6 @@
 <template>
   <div class="product-card">
-    <span class="wishlist-icon" @click="toggleWishlist">
+    <span v-if="showWishlistIcon" class="wishlist-icon" @click="toggleWishlist">
       <HeartIconOutline v-if="!isWishlisted" class="heart-icon" />
       <HeartIconSolid v-if="isWishlisted" class="heart-icon active" />
     </span>
@@ -38,22 +38,15 @@ export default {
     product: {
       type: Object,
       required: true,
-      default: () => ({
-        name: '',
-        image: '',
-        details: {
-          description: '',
-        },
-        fullPriceInCents: '0',
-        salePriceInCents: '0',
-        rating: 0,
-      }),
     },
-  },
-  data() {
-    return {
-      isWishlisted: false,
-    };
+    showWishlistIcon: {
+      type: Boolean,
+      default: true,
+    },
+    isWishlisted: {
+      type: Boolean,
+      required: true,
+    },
   },
   methods: {
     formatPrice(priceInCents: string): string {
@@ -61,7 +54,7 @@ export default {
       return price.toFixed(2).replace('.', ',');
     },
     toggleWishlist() {
-      this.isWishlisted = !this.isWishlisted;
+      this.$emit('toggle-wishlist', this.product.code);
     },
   },
 };

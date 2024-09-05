@@ -57,7 +57,7 @@ export default {
 
 <style scoped>
 .header {
-  background-color: #6a0dad;
+  background-color: #8200ff;
   color: white;
   padding: 16px 32px;
   display: flex;
@@ -87,6 +87,10 @@ export default {
   color: white;
   text-decoration: none;
   margin-right: 24px;
+
+  span {
+    margin-right: 8px;
+  }
 }
 
 .icon {
