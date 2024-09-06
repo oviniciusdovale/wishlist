@@ -4,6 +4,10 @@
 
 Este é um projeto de uma aplicação de **Wishlist** que permite aos usuários visualizar e adicionar produtos a uma lista de desejos. A aplicação é desenvolvida utilizando Vue.js e TypeScript e se comunica com uma API para buscar os produtos e salvar a wishlist no armazenamento local (localStorage). 
 
+## Aplicação na Vercel
+
+https://wishlist-front-sepia.vercel.app/
+
 ## Funcionalidades
 
 - Exibição de produtos com preço, imagem e avaliações.
